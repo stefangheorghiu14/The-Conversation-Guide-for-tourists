@@ -1,0 +1,26 @@
+<!--Configuratiile pentru Hibernate, inclusiv detalii despre conexiunea la baza de -->
+<!-- date si maparea claselor Java la tabelele bazei de date. -->
+
+<hibernate-configuration> <!--deschidem elementele de configurare Hibernate si pentru fabrica de sesiuni -->
+    <session-factory>
+        <!-- Setam clasa driver-ului, userul si parola  pentru conexiunea JDBC, respectiv url-ul bazei de date -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/conversationguide2?useSSL=false</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+
+        <property name="connection.pool_size">100</property>
+
+         <!-- setam dimensiunea maxima a pool-ului(colectiei) de conexiuni -->
+        <!-- activam afisarea instructiunilor SQL in consola -->
+        <property name="show_sql">true</property>
+        <!-- Setam dialectul SQL pentru MySQL -->
+       <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Setam modul de actualizare automata a schemei bazei de date -->
+        <property name="hbm2ddl.auto">update</property>
+        <!-- facem maparea clasei Conversation, adica Hibernate va tine cont de definitia clasei Conversation
+         pentru a crea si gestiona un tabel corespunzator in baza de date-->
+        <mapping class="org.example.model.Conversation"/>
+<!-- Inchidem elementul pentru SessionFactory si Hibernate -->
+    </session-factory>
+</hibernate-configuration>
